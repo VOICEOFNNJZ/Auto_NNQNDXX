@@ -2,7 +2,7 @@
 
 每周自动完成青年大学习 （南宁）
 
-# main.py需要修改SSUUID变量[教程](http://pan.njzs.cf/Fxxk_9/AutoNNQNDXX/getcookie.mp4?preview)
+# main.py需要修改SSUUID变量[(教程)](http://pan.njzs.cf/Fxxk_9/AutoNNQNDXX/getcookie.mp4?preview)
 
 
 # Fork后到Actions启用两个workflow
