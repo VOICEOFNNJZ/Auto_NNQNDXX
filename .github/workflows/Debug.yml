@@ -1,0 +1,27 @@
+name: 手动学习
+on:
+  watch:
+    types: started
+
+jobs:
+    build-and-run:
+        runs-on: ubuntu-latest
+        if: github.event.repository.owner.id == github.event.sender.id
+        
+        steps:
+            - uses: actions/checkout@v3
+            - name: Setup Python
+              uses: actions/setup-python@v3
+              with:
+                  python-version: "3.8"
+            - name: Install dependencies
+              run: |
+                  python -m pip install --upgrade pip
+                  if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+            - name: Study
+              env:
+                  USERNAME: ${{ secrets.USERNAME }}
+                  PASSWORD: ${{ secrets.PASSWORD }}
+                  ORG_ID: ${{ secrets.ORG_ID }}
+              run: |
+                  python main.py
