@@ -8,10 +8,10 @@ SSUUID = ""
 # 以下内容无需更改
 
 headers = {
-	"Cookie": "SSUUID=" + SSUUID
-	"User-Agent": "Mozilla/5.0 (Linux; Android 12; MI MIX 4 Build/S2.MBRJUN.0523; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/86.0.4240.99 XWEB/3171 MMWEBSDK/20211202 Mobile Safari/537.36 MMWEBID/4381 MicroMessenger/8.0.18.2062(0x28001241) Process/toolsmp WeChat/arm64 Weixin GPVersion/1 NetType/WIFI Language/zh_TW ABI/arm64 "
-	"Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/wxpic,image/tpg,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9"
-	"Accept-Encoding": "gzip, deflate"
+	"Cookie": "SSUUID=" + SSUUID,
+	"Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/wxpic,image/tpg,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",
+	"Accept-Encoding": "gzip, deflate",
+        "User-Agent": "Mozilla/5.0 (Linux; Android 12; MI MIX 4 Build/S2.MBRJUN.0523; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/86.0.4240.99 XWEB/3171 MMWEBSDK/20211202 Mobile Safari/537.36 MMWEBID/4381 MicroMessenger/8.0.18.2062(0x28001241) Process/toolsmp WeChat/arm64 Weixin GPVersion/1 NetType/WIFI Language/zh_TW ABI/arm64 "
 }
 
 def GetStudyID(): # 得到课程id
