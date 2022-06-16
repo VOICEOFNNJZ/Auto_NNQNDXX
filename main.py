@@ -1,28 +1,30 @@
 import requests
 import re
+import json
 
-SSUUID=""#将抓包得来的cookie中的SSUUID粘贴到引号中间
+# 将抓包得来的cookie中的SSUUID粘贴到引号中间
+SSUUID = ""
 
-headers={"Cookie":"SSUUID="+SSUUID}
+# 以下内容无需更改
 
-def GetStudyID():#更新课程id
-    url_get="http://qndxx.bestcood.com/mp/nanning/my/index.html"
-    id=requests.get(url_get,headers=headers);id=re.findall(r'(detail_)(.*)(\.html)',id.text);id=re.search(r'\d+',str(id));id=id.group()
-    return id
+headers = {
+	"Cookie": "SSUUID=" + SSUUID
+}
 
-def Study():#发送post
-    url_hit="http://qndxx.bestcood.com/mp/nanning/DaXueXi/LearnHit.html"
-    body={"id": GetStudyID()}
-    study_result = requests.post(url_hit,headers=headers,data=body)
-    return study_result.text
+def GetStudyID(): # 得到课程id
+	url_get = "http://qndxx.bestcood.com/mp/nanning/my/index.html"
+	response = requests.get(url_get, headers = headers)
+	id = re.findall(r'(?<=\/mp\/nanning\/daxuexi\/detail_)\d+(?=\.html)',response.text)
+	return id[0]
 
-def GetState():#只是多写了个def懒得删
-    result=re.findall(r'("code":)(.*)(,"msg")',Study());result=re.search(r'\d',str(result));result=result.group()    
-    if float(result) !=0:
-        print("Error!")
-        return
-    else:
-        print("Success!")
-        return
+def Study(): # 发送post
+	url_hit = "http://qndxx.bestcood.com/mp/nanning/DaXueXi/LearnHit.html"
+	data = {"id": GetStudyID()}
+	response = requests.post(url_hit, headers = headers, data = data)
+	return int(json.loads(response.text)['code'])
 
-GetState()
+code = Study()
+if (code != 0):
+	print("Error!")
+else:
+	print("Success!")
